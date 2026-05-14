@@ -1,0 +1,17 @@
+fastapi==0.110.2
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9
+sentence-transformers==2.6.1
+PyMuPDF==1.23.25
+openai==1.30.1
+python-dotenv==1.0.1
+google-auth==2.29.0
+google-api-python-client==2.125.0
+google-auth-oauthlib==1.2.0
+
+# LangChain + Vector Store dependencies
+langchain==0.2.2
+langchain-community>=0.2.0,<0.3.0
+langchain-openai>=0.1.0,<0.2.0
+faiss-cpu==1.8.0
+tiktoken==0.7.0
