@@ -1,0 +1,31 @@
+name: Claude Issue Responder
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  respond-to-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Respond to issue with Claude
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          trigger_phrase: ""
+          assignee_trigger: ""
+          direct_prompt: |
+            You are a helpful assistant for the Aberdeen Recruiter AI project.
+            A new GitHub issue has been opened. Please read the issue carefully and provide a helpful, concise response.
+            - If it's a bug report: acknowledge it, ask for any missing reproduction steps, and suggest potential workarounds if applicable.
+            - If it's a feature request: acknowledge the idea, note how it fits (or doesn't) with the current architecture, and ask clarifying questions if needed.
+            - If it's a question: answer it directly based on your knowledge of the codebase.
+            Keep your response friendly and professional.
